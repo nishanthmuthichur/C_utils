@@ -1,5 +1,6 @@
 CC = gcc
-CFLAGS = -I.
+LFLAGS = -g -Wall
+RFLAGS = -I.
 
 TARGET = mem_test
 
@@ -9,7 +10,11 @@ $(TARGET): $(DEPS)
 	$(CC) -o $(TARGET) $(DEPS)
 
 mem_test.o: mem_test.c
-	$(CC) -c mem_test.c $(CFLAGS)
+	$(CC) $(LFLAGS) -c mem_test.c $(RFLAGS)
 
 memutils.o: memutils.c
-	$(CC) -c memutils.c $(CFLAGS)
+	$(CC) $(LFLAGS) -c memutils.c $(RFLAGS)
+
+clean:
+	rm -rf *.o
+	rm -rf $(TARGET)

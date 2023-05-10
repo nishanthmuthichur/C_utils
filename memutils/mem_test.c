@@ -3,19 +3,26 @@
 
 #include <memutils.h>
 
-#define N 100
+#define Nx 4
+#define Ny 3
 
 int main() { 
 
-	int *ptr;
+	int i, j;
+	int **array_2D;
 
-	int **int_ptr;
+	array_2D = (int **) malloc_2D_v1(Nx, Ny, sizeof(int));
 
-	ptr = (int*) malloc(N * sizeof(int));
+	for (i = 0; i < Nx; i++) {
+	  for (j = 0; j < Ny; j++) {
 
-	free(ptr);
+	       array_2D[i][j] = -1;	
+	       fprintf(stdout, "array_2D[%d][%d] = %d\n", i, j, array_2D[i][j]);
 
-	int_ptr = (int **)malloc_2D(N, N, sizeof(int));
+	  }
+	}
+
+	free_malloc_2D_v1(array_2D, Nx, Ny);
 
 	fprintf(stdout, "Program executed successfully\n");
 
